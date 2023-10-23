@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cc_nav"
+    app:startDestination="@id/stCardDesignFragment">
+
+    <fragment
+        android:id="@+id/stCardDesignFragment"
+        android:name="com.example.myapplication.StCardDesignFragment"
+        android:label="fragment_st_card_design"
+        tools:layout="@layout/fragment_st_card_design" />
+    <fragment
+        android:id="@+id/stCardListFragment"
+        android:name="com.example.myapplication.StCardListFragment"
+        android:label="fragment_st_card_list"
+        tools:layout="@layout/fragment_st_card_list" />
+    <fragment
+        android:id="@+id/channelListFragment"
+        android:name="com.example.myapplication.ChannelListFragment"
+        android:label="fragment_channel_list"
+        tools:layout="@layout/fragment_channel_list" />
+    <fragment
+        android:id="@+id/competitionListFragment"
+        android:name="com.example.myapplication.CompetitionListFragment"
+        android:label="fragment_competition_list"
+        tools:layout="@layout/fragment_competition_list" />
+    <fragment
+        android:id="@+id/mypageFragment"
+        android:name="com.example.myapplication.MypageFragment"
+        android:label="fragment_mypage"
+        tools:layout="@layout/fragment_mypage" />
+
+</navigation>

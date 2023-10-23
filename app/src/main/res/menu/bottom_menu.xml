@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/stCardDesignFragment"
+        android:title="Design"
+        android:icon="@drawable/ic_stcarddesign"/>
+    <item android:id="@+id/stCardListFragment"
+        android:title="wallet"
+        android:icon="@drawable/ic_stcardlist"/>
+    <item android:id="@+id/channelListFragment"
+        android:title="channel"
+        android:icon="@drawable/ic_channellist"/>
+    <item android:id="@+id/competitionListFragment"
+        android:title="contest"
+        android:icon="@drawable/ic_competitionlist"/>
+    <item android:id="@+id/mypageFragment"
+        android:title="Mypage"
+        android:icon="@drawable/ic_mypage"/>
+</menu>
