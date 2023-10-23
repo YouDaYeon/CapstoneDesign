@@ -13,6 +13,6 @@
         android:title="contest"
         android:icon="@drawable/ic_competitionlist"/>
     <item android:id="@+id/mypageFragment"
-        android:title="Mypage"
+        android:title="Setting"
         android:icon="@drawable/ic_mypage"/>
 </menu>
