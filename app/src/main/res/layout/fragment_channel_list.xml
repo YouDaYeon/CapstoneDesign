@@ -33,10 +33,18 @@
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
-            <View
+            <!-- 채널 검색 창 -->
+            <EditText
+                android:id="@+id/searchEditText"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="[채널 검색하기]"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green" />
 
             <Button
                 android:id="@+id/createChannelButton"
@@ -79,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout="@layout/item_channel"/>
+                    app:layout="@layout/item_channel" />
             </LinearLayout>
         </ScrollView>
 
@@ -105,7 +113,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout="@layout/item_channel"/>
+                    app:layout="@layout/item_channel" />
             </LinearLayout>
         </ScrollView>
 
@@ -132,7 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout="@layout/item_channel"/>
+                    app:layout="@layout/item_channel" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

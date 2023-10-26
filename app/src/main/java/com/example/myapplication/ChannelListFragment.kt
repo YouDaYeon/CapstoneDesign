@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -30,6 +32,7 @@ class ChannelListFragment : Fragment() {
     private lateinit var recyclerViewAssignment: RecyclerView
     private lateinit var recyclerViewMentorMentee: RecyclerView
     private lateinit var recyclerViewCompetition: RecyclerView
+    private lateinit var searchEditText: EditText
 
     companion object {
         const val CREATE_CHANNEL_REQUEST = 1
@@ -52,6 +55,15 @@ class ChannelListFragment : Fragment() {
         recyclerViewCompetition = view.findViewById(R.id.recyclerViewCompetition)
         recyclerViewCompetition.layoutManager = LinearLayoutManager(requireContext())
 
+        searchEditText = view.findViewById(R.id.searchEditText)
+        searchEditText.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                performSearch() // 검색을 수행하는 함수 호출
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
+
         // "채널 만들기" 버튼 클릭 이벤트 처리
         val createChannelButton = view.findViewById<Button>(R.id.createChannelButton)
         createChannelButton.setOnClickListener {
@@ -64,15 +76,12 @@ class ChannelListFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        // Firebase Realtime Database에서 채널 데이터를 가져오는 코드를 이 위치에 추가
+
         fetchChannelDataFromFirebase()
     }
     private fun fetchChannelDataFromFirebase() {
-        val auth = Firebase.auth
-        val user = auth.currentUser
         val database = FirebaseDatabase.getInstance()
-        val userRef = database.getReference("user").child(user?.uid.toString())
-        val channelRef = userRef.child("channels")
+        val channelRef = database.getReference("channels")
 
         // 나머지 데이터 로딩 및 RecyclerView 업데이트 코드를 여기에 작성
 
@@ -85,9 +94,8 @@ class ChannelListFragment : Fragment() {
                         channelList.add(channel)
                     }
                 }
-                for (channel in channelList) {
-                    ChannelListManager.initialize(channelList)
-                }
+                ChannelListManager.setChannels(channelList)
+
 
                 val assignmentList = getChannelsByType("PROJECT")
                 val mentorMenteeList = getChannelsByType("MENTOR_MENTEE")
@@ -128,6 +136,70 @@ class ChannelListFragment : Fragment() {
             }
         })
     }
+    private fun performSearch() {
+        val searchText = searchEditText.text.toString().toLowerCase()
+        val channelList = ChannelListManager.getChannels()
+
+        if (searchText.isNotBlank()) {
+            val filteredChannels = channelList.filter { channel ->
+                val titleMatches = channel.title.toLowerCase().contains(searchText)
+                val lectureMatches = channel.lecture?.toLowerCase()?.contains(searchText) ?: false
+                val competitionMatches =
+                    channel.competitionName?.toLowerCase()?.contains(searchText) ?: false
+                val descriptionMatches =
+                    channel.description?.toLowerCase()?.contains(searchText) ?: false
+
+                titleMatches || lectureMatches || competitionMatches || descriptionMatches
+            }
+            val assignmentList = filteredChannels.filter { it.type == ChannelType.PROJECT }
+            val mentorMenteeList = filteredChannels.filter { it.type == ChannelType.MENTOR_MENTEE }
+            val competitionList = filteredChannels.filter { it.type == ChannelType.COMPETITION }
+
+            // 각 유형에 맞게 RecyclerView를 업데이트합니다
+            updateAssignmentRecyclerView(assignmentList)
+            updateMentorMenteeRecyclerView(mentorMenteeList)
+            updateCompetitionRecyclerView(competitionList)
+        } else {
+            // 검색어가 비어 있을 때는 전체 채널 목록을 표시
+            val allChannels = ChannelListManager.getChannels()
+            updateAssignmentRecyclerView(allChannels.filter { it.type == ChannelType.PROJECT })
+            updateMentorMenteeRecyclerView(allChannels.filter { it.type == ChannelType.MENTOR_MENTEE })
+            updateCompetitionRecyclerView(allChannels.filter { it.type == ChannelType.COMPETITION })
+        }
+    }
+    private fun updateAssignmentRecyclerView(list: List<Channel>) {
+        val adapterAssignment = ChannelAdapter(list) { channelId ->
+            val channel = ChannelListManager.getChannelById(channelId)
+            if (channel != null) {
+                showJoinChannelDialog(channel)
+            }
+        }
+        recyclerViewAssignment.adapter = adapterAssignment
+        adapterAssignment.notifyDataSetChanged()
+    }
+
+    private fun updateMentorMenteeRecyclerView(list: List<Channel>) {
+        val adapterMentorMentee = ChannelAdapter(list) { channelId ->
+            val channel = ChannelListManager.getChannelById(channelId)
+            if (channel != null) {
+                showJoinChannelDialog(channel)
+            }
+        }
+        recyclerViewMentorMentee.adapter = adapterMentorMentee
+        adapterMentorMentee.notifyDataSetChanged()
+    }
+
+    private fun updateCompetitionRecyclerView(list: List<Channel>) {
+        val adapterCompetition = ChannelAdapter(list) { channelId ->
+            val channel = ChannelListManager.getChannelById(channelId)
+            if (channel != null) {
+                showJoinChannelDialog(channel)
+            }
+        }
+        recyclerViewCompetition.adapter = adapterCompetition
+        adapterCompetition.notifyDataSetChanged()
+    }
+
 
     private fun getChannelsByType(channelType: String): List<Channel> {
         return ChannelListManager.getChannels().filter { it.type.name == channelType }
@@ -156,6 +228,7 @@ class ChannelListFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == CREATE_CHANNEL_REQUEST && resultCode == RESULT_OK) {
+
             // CreateChannelActivity에서 돌아왔고, 결과가 OK인 경우
             val updatedAssignmentList = getChannelsByType("PROJECT")
             val adapterAssignment = ChannelAdapter(updatedAssignmentList) { channelId ->
@@ -193,5 +266,3 @@ class ChannelListFragment : Fragment() {
         }
     }
 }
-
-
