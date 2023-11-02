@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/gradient_background">
 
     <TextView
         android:id="@+id/welcome_text"
@@ -22,20 +23,25 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/design_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="명함 디자인하러 가기!"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="218dp"
+        android:layout_height="65dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="32dp"
-        android:textSize="20sp" />
+        android:text="명함 디자인하러 가기!"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_text"
+        android:background="@drawable/gradient_background"/>
+
+
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-55dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
