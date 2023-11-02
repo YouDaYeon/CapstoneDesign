@@ -162,7 +162,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="완료"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:backgroundTint="@color/cc_blue"/>
 
 
 </LinearLayout>

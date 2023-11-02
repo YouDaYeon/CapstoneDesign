@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:text="로그아웃"
+        android:backgroundTint="@color/cc_blue"
         android:layout_gravity="center|top" />
     <Button
         android:id="@+id/signoutButton"
@@ -36,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:text="회원탈퇴"
+        android:backgroundTint="@color/cc_blue"
         android:layout_gravity="center|top" />
 
     <androidx.appcompat.widget.Toolbar

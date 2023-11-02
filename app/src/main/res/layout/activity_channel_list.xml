@@ -23,6 +23,6 @@
         android:layout_marginTop="16dp"
         android:onClick="onCreateChannelButtonClick"
         android:text="채널 만들기"
-        tools:ignore="HardcodedText,UsingOnClickInXml" />
+        tools:ignore="HardcodedText,UsingOnClickInXml"/>
 
 </LinearLayout>
