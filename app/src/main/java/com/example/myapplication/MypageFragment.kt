@@ -12,6 +12,7 @@ import com.example.myapplication.LogInActivity
 import android.app.AlertDialog
 import android.util.Log
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.database.FirebaseDatabase
@@ -37,6 +38,26 @@ class MypageFragment : Fragment() {
         val signoutButton = view.findViewById<Button>(R.id.signoutButton)
         signoutButton.setOnClickListener {
             showSignoutConfirmationDialog()
+        }
+
+        val userNameTextView = view.findViewById<TextView>(R.id.user_name)
+        val userUid = mAuth.currentUser?.uid
+        if (userUid != null) {
+            val databaseReference = FirebaseDatabase.getInstance().reference
+            val userRef = databaseReference.child("user").child(userUid)
+
+            userRef.child("name").get()
+                .addOnSuccessListener { dataSnapshot ->
+                    val userName = dataSnapshot.value as String?
+                    if (!userName.isNullOrBlank()) {
+                        // 사용자 이름이 유효한 경우, TextView에 설정
+                        userNameTextView.text = userName
+                    }
+                }
+                .addOnFailureListener { e ->
+                    // 사용자 이름을 가져오는 데 실패한 경우에 대한 처리
+                    Log.e("TAG", "Error getting user name", e)
+                }
         }
 
         return view
