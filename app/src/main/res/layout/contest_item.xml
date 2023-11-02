@@ -11,7 +11,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="30dp"
+        android:background="@drawable/gradient_background">
 
         <TextView
             android:id="@+id/nameTextView"
