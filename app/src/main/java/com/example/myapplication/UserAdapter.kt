@@ -30,6 +30,16 @@ class UserAdapter(private val context: Context, private val userList: ArrayList<
         //화면에 데이터 보여주기
         holder.nameText.text=currentUser.name
 
+        //아이템 클릭 이벤트
+        holder.itemView.setOnClickListener{
+            val intent = Intent(context, CardViewActivity::class.java)
+
+            //넘길 데이터
+            intent.putExtra("name", currentUser.name)
+            intent.putExtra("uId", currentUser.uId)
+
+            context.startActivity(intent)
+        }
     }
 
     /**
