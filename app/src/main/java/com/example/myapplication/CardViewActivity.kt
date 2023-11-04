@@ -28,5 +28,10 @@ class CardViewActivity : AppCompatActivity() {
         val titleTextView: TextView = toolbar.findViewById(R.id.name)
         titleTextView.text = titleText
 
+        // 명함에 이름 설정
+        val userName: TextView = findViewById(R.id.studentname)
+        userName.text = Name
+
+
     }
 }
