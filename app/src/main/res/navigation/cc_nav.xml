@@ -9,7 +9,7 @@
         android:id="@+id/stCardDesignFragment"
         android:name="com.example.myapplication.StCardDesignFragment"
         android:label="fragment_st_card_design"
-        tools:layout="@layout/fragment_st_card_design" />
+        tools:layout="@layout/activity_st_card_design" />
     <fragment
         android:id="@+id/stCardListFragment"
         android:name="com.example.myapplication.StCardListFragment"

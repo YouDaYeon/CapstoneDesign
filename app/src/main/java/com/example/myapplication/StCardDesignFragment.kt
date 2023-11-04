@@ -33,7 +33,7 @@ class StCardDesignFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_st_card_design, container, false)
+        return inflater.inflate(R.layout.activity_st_card_design, container, false)
     }
 
     companion object {

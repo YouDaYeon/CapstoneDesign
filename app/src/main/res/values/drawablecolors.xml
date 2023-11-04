@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="drawablecolors">
+        <item>@drawable/color_navy_blue</item>
+        <item>@drawable/color_blue_purple</item>
+        <item>@drawable/color_purple_red</item>
+        <item>@drawable/color_lime_green</item>
+        <item>@drawable/color_pink_orange</item>
+        <item>@drawable/color_orange_orange</item>
+        <item>@drawable/color_pink_blue</item>
+    </string-array>
+</resources>
