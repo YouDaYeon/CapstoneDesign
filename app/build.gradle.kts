@@ -59,4 +59,6 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.2")
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation("org.jsoup:jsoup:1.13.1")
+
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
 }
