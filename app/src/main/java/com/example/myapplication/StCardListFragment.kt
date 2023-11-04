@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -46,6 +47,15 @@ class StCardListFragment : Fragment() {
         val recyclerView: RecyclerView = binding.userRecyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
+
+        adapter.setOnEvaluateClickListener(object : UserAdapter.OnEvaluateClickListener {
+            override fun onEvaluateClick(user: User) {
+                val intent = Intent(requireContext(), EvaluateStar::class.java)
+                intent.putExtra("userId", user.uId)
+                startActivity(intent)
+            }
+        })
+
 
         // Fetch user information
         val currentUserId = mAuth.currentUser?.uid

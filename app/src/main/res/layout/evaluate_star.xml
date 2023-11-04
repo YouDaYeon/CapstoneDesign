@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF"
+    tools:context=".EvaluateStar">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:title="팀원 평가하기"
+        app:titleTextColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/question1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. 이 팀원의 업무에 대한 전반적인 만족도는 어떠셨나요?"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBarQ1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stepSize="0.5" />
+
+    <TextView
+        android:id="@+id/question2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. 이 팀원은 팀과의 협업에 얼마나 기여했나요?"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBarQ2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stepSize="0.5" />
+
+    <TextView
+        android:id="@+id/question3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3. 이 팀원과의 의사 소통은 원활했나요?"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBarQ3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stepSize="0.5" />
+
+    <TextView
+        android:id="@+id/question4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4. 이 팀원은 과제의 목표와 일정을 잘 준수했나요?"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBarQ4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stepSize="0.5" />
+
+    <TextView
+        android:id="@+id/question5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5. 이 팀원과 다음번에도 같이 활동을 하거나, 다른 사람에게 추천하실 생각이 있으신가요?"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBarQ5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stepSize="0.5" />
+
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="제출"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:id="@+id/averageRatingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="평균 점수: 0.0"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
+
+</LinearLayout>

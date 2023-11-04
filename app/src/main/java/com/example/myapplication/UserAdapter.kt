@@ -5,11 +5,22 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class UserAdapter(private val context: Context, private val userList: ArrayList<User>):
     RecyclerView.Adapter<UserAdapter.UserViewHolder>(){
+
+    interface OnEvaluateClickListener {
+        fun onEvaluateClick(user: User)
+    }
+
+    private var evaluateClickListener: OnEvaluateClickListener? = null
+
+    fun setOnEvaluateClickListener(listener: OnEvaluateClickListener) {
+        evaluateClickListener = listener
+    }
 
     /**
      * 화면 설정
@@ -29,6 +40,19 @@ class UserAdapter(private val context: Context, private val userList: ArrayList<
 
         //화면에 데이터 보여주기
         holder.nameText.text=currentUser.name
+
+        holder.evaluateButton.visibility = View.VISIBLE
+        holder.evaluateButton.setOnClickListener {
+            evaluateClickListener?.onEvaluateClick(currentUser)
+        }
+
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, CardViewActivity::class.java)
+            intent.putExtra("name", currentUser.name)
+            intent.putExtra("uId", currentUser.uId)
+            context.startActivity(intent)
+        }
 
         //아이템 클릭 이벤트
         holder.itemView.setOnClickListener{
@@ -51,5 +75,6 @@ class UserAdapter(private val context: Context, private val userList: ArrayList<
 
     class UserViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val nameText: TextView = itemView.findViewById(R.id.name_text)
+        val evaluateButton: Button = itemView.findViewById(R.id.evaluate_Button)
     }
 }
