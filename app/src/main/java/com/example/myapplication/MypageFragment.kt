@@ -31,10 +31,18 @@ class MypageFragment : Fragment() {
 
 
         // 시간표 수정 버튼 클릭 리스너 추가
-        val timetableButton = view.findViewById<Button>(R.id.timetableButton)
-        timetableButton.setOnClickListener {
+        val timetableEditButton = view.findViewById<Button>(R.id.timetableEditButton)
+        timetableEditButton.setOnClickListener {
             // 시간표 수정 액티비티로 이동
             val intent = Intent(requireContext(), TimetableActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 시간표 보기 버튼 클릭 리스너 추가
+        val timetableButton = view.findViewById<Button>(R.id.timetableButton)
+        timetableButton.setOnClickListener {
+            // 시간표 보기 액티비티로 이동
+            val intent = Intent(requireContext(), TimetableShowActivity::class.java)
             startActivity(intent)
         }
 

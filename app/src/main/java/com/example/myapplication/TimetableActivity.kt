@@ -40,21 +40,24 @@ class TimetableActivity : AppCompatActivity() {
                     val editText = findViewById<EditText>(editTextId)
                     val key = "${day}_${slot}"
                     editor.putString(key, editText.text.toString())
-                    editText.text.clear()
                 }
             }
 
-            editor.apply()
+            // 변경 내용을 동기적으로 저장
+            editor.commit()
+
             Toast.makeText(this, "시간표가 저장되었습니다!", Toast.LENGTH_SHORT).show()
 
-            // "mypage" 액티비티로 이동
+            // MyPage 화면으로 이동
             val intent = Intent(this, MypageFragment::class.java)
             startActivity(intent)
         }
     }
 
-    override fun onStop() {
-        super.onStop()
+    // onSaveInstanceState 메서드를 오버라이드하여 상태 저장을 구현
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
         val editor = sharedPreferences.edit()
 
         for (day in listOf("monday", "tuesday", "wednesday", "thursday", "friday")) {

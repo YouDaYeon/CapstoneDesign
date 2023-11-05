@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,18 +14,17 @@
         android:label=""
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.MyApplication"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
         <activity
-            android:name="com.example.myapplication.TimetableActivity">
-        </activity>
-
+            android:name=".TimetableShowActivity"
+            android:exported="false" />
+        <activity android:name=".TimetableActivity"></activity>
         <activity
             android:name=".CardViewActivity"
-            android:theme="@style/Theme.AppCompat.Dialog"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
             android:name=".SignActivity"
             android:exported="false" />
@@ -49,7 +48,7 @@
             android:exported="true" />
         <activity
             android:name=".StCardDesignActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".EvaluateStar"
             android:exported="false" />
