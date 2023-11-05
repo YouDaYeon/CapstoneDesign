@@ -8,13 +8,13 @@
     app:cardCornerRadius="8dp"
     app:cardElevation="2dp">
 
-
-<LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        android:background="@drawable/gradient_background">
+        android:id="@+id/channelItemBG"
+        android:background="@drawable/color_pink_orange">
 
         <!-- 채널 이름 텍스트 뷰 -->
         <TextView
@@ -22,9 +22,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="채널 이름"
-            android:textSize="24sp"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:font="@font/notosansbold"
             android:textStyle="bold"
-            android:layout_gravity="center"
             android:layout_marginBottom="8dp" />
 
         <!-- 채널 설명 텍스트 뷰 -->
@@ -32,9 +33,10 @@
             android:id="@+id/channelDescriptionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:font="@font/notosansregular"
+            android:textColor="#ffffff"
             android:text="채널 상세 내용"
-            android:textSize="18sp"
-            android:layout_gravity="center" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

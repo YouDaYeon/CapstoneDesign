@@ -30,16 +30,18 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
                 android:text="채널 목록"
+                android:font="@font/notosansblack"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
-            <!-- 채널 검색 창 -->
             <EditText
                 android:id="@+id/searchEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="[채널 검색하기]"
+                android:font="@font/notosansmedium"
                 android:imeOptions="actionDone"
                 android:inputType="text"
                 android:minHeight="48dp"
@@ -76,9 +78,12 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="조별과제"
+                    android:gravity="center"
+                    android:font="@font/notosansblack"
+                    android:textStyle="bold"
                     android:textSize="20sp"
                     android:padding="8dp" />
 
@@ -87,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout="@layout/item_channel" />
+                    app:layout="@layout/item_channel"/>
             </LinearLayout>
         </ScrollView>
 
@@ -102,9 +107,12 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="멘토와 멘티"
+                    android:gravity="center"
+                    android:font="@font/notosansblack"
+                    android:textStyle="bold"
                     android:textSize="20sp"
                     android:padding="8dp" />
 
@@ -113,7 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout="@layout/item_channel" />
+                    app:layout="@layout/item_channel"/>
             </LinearLayout>
         </ScrollView>
 
@@ -129,9 +137,12 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="공모전"
+                    android:gravity="center"
+                    android:font="@font/notosansblack"
+                    android:textStyle="bold"
                     android:textSize="20sp"
                     android:padding="8dp" />
 
@@ -139,8 +150,10 @@
                     android:id="@+id/recyclerViewCompetition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:font="@font/notosansregular"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout="@layout/item_channel" />
+                    app:layout="@layout/item_channel"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

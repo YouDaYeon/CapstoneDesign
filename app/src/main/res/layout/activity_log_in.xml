@@ -8,11 +8,12 @@
 
     <ImageView
         android:id="@+id/logo_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
-        android:src="@drawable/caps"/>
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/cc_logo_only"/>
 
     <EditText
         android:id="@+id/email_edit"
@@ -22,8 +23,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
+        android:elevation="10dp"
         android:background="@drawable/edit_background"
-        android:hint="Email"
+        android:hint="이메일"
         android:inputType="textEmailAddress"
         android:paddingStart="15dp"/>
 
@@ -36,7 +38,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/edit_background"
-        android:hint="password"
+        android:hint="비밀번호"
         android:inputType="numberPassword"
         android:paddingStart="15dp"/>
 
