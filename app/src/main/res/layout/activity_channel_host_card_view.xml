@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CardViewActivity">
+
+    <!-- 명함 상세 이미지 -->
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="333dp"
+        android:layout_height="628dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/pink_orange"
+        android:visibility="visible" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="333dp"
+        android:layout_height="628dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/pink_blue"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="333dp"
+        android:layout_height="628dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/green_skyblue"
+        android:visibility="invisible" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="81dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:font="@font/notosansbold"
+            android:text="홍익대학교"
+            android:textColor="#FFFFFF"
+            android:textSize="23.61dp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/studentMajor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:font="@font/notosansregular"
+                android:text="소프트웨어융합학과"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                tools:ignore="SmallSp" />
+            <TextView
+                android:id="@+id/studentGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3.5dp"
+                android:font="@font/notosansregular"
+                android:text="4학년"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                tools:ignore="SmallSp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3.5dp"
+                android:font="@font/notosansregular"
+                android:text="재학"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                tools:ignore="SmallSp" />
+        </LinearLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="63.59dp"
+            android:src="@drawable/man"
+            android:id="@+id/profileimageCard"
+            android:elevation="20dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/studentname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="175dp"
+                android:font="@font/notosansbold"
+                android:text="김찬영"
+                android:textColor="#FFFFFF"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="175dp"
+                android:font="@font/notosansbold"
+                android:text="  |  "
+                android:textColor="#FFFFFF"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/studentID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="175dp"
+                android:font="@font/notosansregular"
+                android:text="B893285"
+                android:textColor="#FFFFFF"
+                android:textSize="22dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>
