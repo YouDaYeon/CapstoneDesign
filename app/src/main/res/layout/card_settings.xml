@@ -210,7 +210,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="30dp"
-                    android:popupBackground="#2540FF"
+                    android:font="@font/notosansmedium"
+                    android:popupBackground="@color/white"
                     android:spinnerMode="dropdown" />
             </LinearLayout>
 
@@ -238,7 +239,9 @@
                     android:layout_height="wrap_content"
                     android:autofillHints="학과"
                     android:paddingRight="30dp"
-                    android:popupBackground="#2540FF"
+                    android:font="@font/notosansmedium"
+                    android:popupTheme="@android:style/ThemeOverlay.Material.Light"
+                    android:popupBackground="@color/white"
                     android:spinnerMode="dropdown" />
             </LinearLayout>
 

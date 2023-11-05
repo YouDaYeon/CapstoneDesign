@@ -6,7 +6,9 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,8 +16,11 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
 import com.example.myapplication.databinding.CardSettingsBinding
@@ -81,6 +86,30 @@ class CardSettingsDialog : DialogFragment() {
             clickedbutton = "3"
         }
 
+        var selectedImage: de.hdodenhof.circleimageview.CircleImageView
+        selectedImage = view.findViewById(R.id.profileimage)
+        var imgUriSave: Uri? = null
+        var pickedImgUriSave: String = ""
+
+
+        val changeImage =
+            registerForActivityResult(
+                ActivityResultContracts.StartActivityForResult()
+            ) {
+                if (it.resultCode == Activity.RESULT_OK) {
+                    val data = it.data
+                    val imgUri = data?.data
+                    selectedImage.setImageURI(imgUri)
+                    imgUriSave = imgUri
+                }
+            }
+
+        selectedImage.setOnClickListener {
+            val pickImg = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            changeImage.launch(pickImg)
+            var pickedImgSave: ImageView = selectedImage
+        }
+
 
         // 학번 입력 EditText
         val studentIDinput:EditText = view.findViewById(R.id.studentIDinput)
@@ -127,21 +156,31 @@ class CardSettingsDialog : DialogFragment() {
             }
         }
 
-        var string1 = ArrayList<String>()
 
-        val intent = Intent()
-        intent.putExtra("selectedGradeSave", selectedGradeSave)
-        intent.putExtra("selectedMajorSave", selectedMajorSave)
-        intent.putExtra("studentIDSave", studentIDSave)
-        intent.putExtra("clickedbutton", clickedbutton)
+
+        val expendleft:ImageView = view.findViewById(R.id.expendleft)
+        expendleft.setOnClickListener {
+            dismiss()
+        }
 
         // 저장 버튼 클릭
         val studentSaveBtn:TextView = view.findViewById(R.id.studentSaveBtn)
-        Log.d("messi", "studentSaveBtn : "+ studentSaveBtn.toString())
         studentSaveBtn.setOnClickListener {
             studentIDSave = if (studentIDinput.text.isNotEmpty()) studentIDinput.text.toString() else ""
             Log.d("messi", "studentSaveBtn clicked")
             Log.d("messi", "selection : " + studentIDSave + ", " + selectedGradeSave + ", " + selectedMajorSave + ", " + clickedbutton)
+            val bundle = Bundle().apply {
+                putString("selectedGradeSave", selectedGradeSave)
+                putString("selectedMajorSave", selectedMajorSave)
+                putString("studentIDSave", studentIDSave)
+                putString("clickedbutton", clickedbutton)
+            }
+            val fragment = StCardDesignFragment()
+            fragment.arguments = bundle
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.add(fragment, "StCardDesignFragment")
+            transaction.commit()
+            dismiss()
         }
         return AlertDialog.Builder(requireContext())
             .setView(view)
@@ -151,7 +190,6 @@ class CardSettingsDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
     }
 }

@@ -44,7 +44,8 @@
                 android:font="@font/notosansmedium"
                 android:imeOptions="actionDone"
                 android:inputType="text"
-                android:minHeight="48dp"
+                android:gravity="center"
+                android:minHeight="30dp"
                 android:textColor="@color/green"
                 android:textColorHint="@color/green" />
 

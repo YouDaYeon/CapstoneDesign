@@ -100,7 +100,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:font="@font/notosansregular"
-                        android:text="소프트웨어융합학과"
+                        android:text="디자인컨버전스학부"
                         android:textColor="#FFFFFF"
                         android:textSize="15dp"
                         tools:ignore="SmallSp" />
@@ -110,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3.5dp"
                         android:font="@font/notosansregular"
-                        android:text="4학년"
+                        android:text="2학년"
                         android:textColor="#FFFFFF"
                         android:textSize="15dp"
                         tools:ignore="SmallSp" />
@@ -161,7 +161,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="175dp"
                         android:font="@font/notosansregular"
-                        android:text="B893285"
+                        android:text="C893285"
                         android:textColor="#FFFFFF"
                         android:textSize="22dp" />
                 </LinearLayout>

@@ -1,120 +1,88 @@
 package com.example.myapplication
 
-import android.app.Activity
+
 import android.app.AlertDialog
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import android.content.SharedPreferences
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
-import com.example.myapplication.databinding.CardSettingsBinding
 import com.example.myapplication.databinding.FragmentStCardDesignBinding
 
 class StCardDesignFragment : Fragment() {
 
-    private lateinit var settingsBtn: ImageView
-    private lateinit var studentMajorBtn: TextView
-    private lateinit var studentIDBtn: TextView
-    private lateinit var studentMajorName: String
-    private lateinit var studentIDName: String
-
     val binding by lazy { FragmentStCardDesignBinding.inflate(layoutInflater) }
 
-    var count = 1
-
-
-    // private var _binding: FragmentStCardDesignBinding? = null
-    // private val binding get() = _binding!!
-
-
+    var checkNum = 1
 
     private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("messi", "onCreate turned")
         super.onCreate(savedInstanceState)
         sharedPreferences = requireActivity().getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
 
         val binding = FragmentStCardDesignBinding.inflate(layoutInflater)
-
-        // val studentID = binding.studentID.getText()
-
-
-        val studentID = binding.studentID
-        val studentMajor = binding.studentMajor
-        val studentGrade = binding.studentGrade
-        if(count==2) {
-            Log.d("messi", "before : "+ studentGrade.getText() + ", " + studentMajor.getText() + ", " + studentID.getText())
-
-            /*
-            Log.d("messi", "getting : "+ CardSettings().writtenStudentID + ", " + CardSettings().selectedMajorSave + ", " + CardSettings().selectedGradeSave)
-            studentID.setText(CardSettings().writtenStudentID)
-            studentMajor.setText(CardSettings().selectedMajorSave)
-            studentGrade.setText(CardSettings().selectedGradeSave)
-
-            */
-            Log.d("messi", "after : "+ studentGrade.getText() + ", " + studentMajor.getText() + ", " + studentID.getText())
-
-        }
-
-        // val selectedGradeSave = sharedPreferences.getString("selectedGradeSave", "nuull")
-        // val selectedMajorSave = sharedPreferences.getString("selectedMajorSave", "nuull")
-        // val writtenStudentID = sharedPreferences.getString("writtenStudentID", "nuull")
-        // val selectedButtonNum = sharedPreferences.getString("selectedButtonNum", "nuull")
-        // Log.d("messi", "getString : $selectedGradeSave, $selectedMajorSave, $writtenStudentID, $selectedButtonNum")
     }
 
-    lateinit var navController : NavController
 
+
+    var selectedGradeSave:String = "4학년"
+    var selectedMajorSave:String = "소프트웨어융합학과"
+    var studentIDSave:String = "B893285"
+
+    lateinit var selectedGrade: String
+    lateinit var selectedMajor: String
+    lateinit var studentID: String
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        Log.d("messi", "onCreateView turned")
         val view = inflater.inflate(R.layout.fragment_st_card_design, null)
         val settingsBtn = view.findViewById<ImageView>(R.id.settingsBtn)
+        val profileImageCard = view.findViewById<ImageView>(R.id.profileimageCard)
         val studentMajorBtn = view.findViewById<TextView>(R.id.studentMajor)
         val studentIDBtn = view.findViewById<TextView>(R.id.studentID)
+        val studentGradeBtn = view.findViewById<TextView>(R.id.studentGrade)
+
+        /// val selectedGradeSave = arguments?.getString("selectedGradeSave")
+        // val selectedMajorSave = arguments?.getString("selectedMajorSave")
+        // val studentIDSave = arguments?.getString("studentIDSave")
+        // val clickedbutton = arguments?.getString("clickedbutton")
+        selectedGradeSave = arguments?.getString("selectedGradeSave").toString()
+        selectedMajorSave = arguments?.getString("selectedMajorSave").toString()
+        studentIDSave = arguments?.getString("studentIDSave").toString()
+        val clickedbutton = arguments?.getString("clickedbutton")
+        Log.d("messi", "argumentsgot : " + studentIDSave + ", " + selectedGradeSave + ", " + selectedMajorSave + ", " + clickedbutton)
 
 
-        // navController = Navigation.findNavController(view)
-        /*
-        settingsBtn.setOnClickListener(object :View.OnClickListener {
-            override fun onClick(v: View?) {
-                Log.d("messi", "button clicked")
-                // val intent = Intent(context, CardSettings::class.java)
-                // startActivity(intent)
-                // 다른 액티비티에서 전환할 때
-                // activity?.finish()
-                // navController.navigate(R.id.action_stCardDesignFragment2_to_cardSettings)
-                Log.d("messi", "activated")
-                count = 2
-            }
-        })
-         */
+
+        selectedGrade = selectedGradeSave
+        selectedMajor = selectedMajorSave
+        studentID = studentIDSave
+        Log.d("messi", "argumentsgot : " + studentID + ", " + selectedGrade + ", " + selectedMajor)
+
+        profileImageCard.setOnClickListener {
+            val studentMajorBtn = view.findViewById<TextView>(R.id.studentMajor)
+            val studentGradeBtn = view.findViewById<TextView>(R.id.studentGrade)
+            val studentIDBtn = view.findViewById<TextView>(R.id.studentID)
+
+            Log.d("messi", "argumentsgot : $studentID, $selectedGrade, $selectedMajor")
+            studentMajorBtn.text = "소프트웨어융합학과"
+            studentGradeBtn.text = "4학년"
+            studentIDBtn.text = "B893285"
+        }
+
         settingsBtn.setOnClickListener {
-            // Log.d("messi", "student name : "+studentMajorName)
-            // val intent = Intent(context, CardSettings::class.java)
-            // startActivity(intent)
-
-            // val builder = AlertDialog.Builder(requireContext())
-            // val inflater = requireActivity().layoutInflater
-            // val dialogView = inflater.inflate(R.layout.card_settings, null)
-            // builder.setView(dialogView)
-            // val dialog = builder.create()
-            // dialog.show()
-
             val dialog = CardSettingsDialog()
             dialog.show(childFragmentManager, "CardSettingsDialog")
             Log.d("messi", "Card Settings shown")
@@ -123,11 +91,6 @@ class StCardDesignFragment : Fragment() {
         studentMajorBtn.setOnClickListener {
             // Log.d("messi", "student name : "+studentMajorName)
             val builder = AlertDialog.Builder(requireContext())
-            // majorinfomajor = findViewById(R.id.majorinfomajor)
-            // Log.d("messi", "majorinfo : "+ majorinfomajor)
-            // Log.d("messi", "major : "+ major)
-            // Log.d("messi", "majorinfo : "+ majorinfomajor)
-            // Log.d("messi", "major : "+ major)
             val dialogView = layoutInflater.inflate(R.layout.major_informations, null)
             builder.setView(dialogView).show()
         }
@@ -138,17 +101,41 @@ class StCardDesignFragment : Fragment() {
             val dialogView = layoutInflater.inflate(R.layout.graduation_requirements, null)
             builder.setView(dialogView).show()
         }
-
-        /*
-        Log.d("messi", "studentGrade will get : "+ arguments?.getString("selectedGradeSave"))
-        val studentGrade: String? = arguments?.getString("selectedGradeSave")
-        Log.d("messi", "studentGrade got : $studentGrade")
-         */
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d("messi", "onViewCreated turned")
         super.onViewCreated(view, savedInstanceState)
+
         sharedPreferences = requireActivity().getSharedPreferences("my_prefs",Context.MODE_PRIVATE)
+
+        /*
+        val studentMajorBtn = view.findViewById<TextView>(R.id.studentMajor)
+        val studentIDBtn = view.findViewById<TextView>(R.id.studentID)
+        val studentGradeBtn = view.findViewById<TextView>(R.id.studentGrade)
+
+        val checkNum = arguments?.getInt("checkNum")
+
+        if(checkNum==2) {
+            studentMajorBtn.setText(selectedMajorSave)
+            studentGradeBtn.setText(selectedGradeSave)
+            studentIDBtn.setText(studentIDSave)
+            Log.d("messi", "setText turned")
+
+            Handler(Looper.getMainLooper()).postDelayed( {
+                studentMajorBtn.invalidate()
+                studentGradeBtn.invalidate()
+                studentIDBtn.invalidate()
+
+                studentMajorBtn.requestLayout()
+                studentGradeBtn.requestLayout()
+                studentIDBtn.requestLayout()
+                Log.d("messi", "selectiongetafter : " + studentMajorBtn.text.toString() + ", " +  studentGradeBtn.text.toString() + ", " +  studentIDBtn.text.toString())
+            },1000)
+        }
+         */
+
+
     }
 }
