@@ -30,6 +30,14 @@ class MypageFragment : Fragment() {
         mAuth = FirebaseAuth.getInstance()
 
 
+        // 시간표 수정 버튼 클릭 리스너 추가
+        val timetableButton = view.findViewById<Button>(R.id.timetableButton)
+        timetableButton.setOnClickListener {
+            // 시간표 수정 액티비티로 이동
+            val intent = Intent(requireContext(), TimetableActivity::class.java)
+            startActivity(intent)
+        }
+
         val logoutButton = view.findViewById<Button>(R.id.logoutButton)
         logoutButton.setOnClickListener {
             showLogoutConfirmationDialog()
@@ -62,6 +70,7 @@ class MypageFragment : Fragment() {
 
         return view
     }
+
 
     private fun showLogoutConfirmationDialog() {
         AlertDialog.Builder(requireContext())
