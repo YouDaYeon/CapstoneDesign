@@ -56,6 +56,14 @@ class StCardListFragment : Fragment() {
             }
         })
 
+        adapter.setOnTimeClickListener(object : UserAdapter.OnTimeClickListener {
+            override fun onTimeClick(user: User) {
+                val intent = Intent(requireContext(), FindTimetable::class.java)
+                intent.putExtra("userId", user.uId)
+                startActivity(intent)
+            }
+        })
+
 
         // Fetch user information
         val currentUserId = mAuth.currentUser?.uid

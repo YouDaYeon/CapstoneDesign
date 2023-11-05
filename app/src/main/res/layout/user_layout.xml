@@ -13,13 +13,16 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/name_text"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/black"/>
-
+    <Button
+        android:id="@+id/timetable_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="시간표 보기"
+        android:layout_gravity="center"
+        android:layout_marginStart="10dp"
+        android:visibility="visible"
+        android:layout_toEndOf="@+id/name_text"
+        android:layout_toRightOf="@+id/name_text" />
 
     <Button
         android:id="@+id/evaluate_Button"
@@ -32,4 +35,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/name_text"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/black"/>
 </RelativeLayout>

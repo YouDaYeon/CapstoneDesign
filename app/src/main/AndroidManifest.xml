@@ -11,7 +11,7 @@
         android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label=""
+        android:label="Campus Connect"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
@@ -66,6 +66,9 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity2"
+            android:exported="true" />
+        <activity
+            android:name=".FindTimetable"
             android:exported="true" />
     </application>
 

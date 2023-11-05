@@ -22,6 +22,16 @@ class UserAdapter(private val context: Context, private val userList: ArrayList<
         evaluateClickListener = listener
     }
 
+    interface OnTimeClickListener {
+        fun onTimeClick(user: User)
+    }
+
+    private var timeClickListener: OnTimeClickListener? = null
+
+    fun setOnTimeClickListener(listener: OnTimeClickListener) {
+        timeClickListener = listener
+    }
+
     /**
      * 화면 설정
      */
@@ -44,6 +54,11 @@ class UserAdapter(private val context: Context, private val userList: ArrayList<
         holder.evaluateButton.visibility = View.VISIBLE
         holder.evaluateButton.setOnClickListener {
             evaluateClickListener?.onEvaluateClick(currentUser)
+        }
+
+        holder.timetableButton.visibility = View.VISIBLE
+        holder.timetableButton.setOnClickListener {
+            timeClickListener?.onTimeClick(currentUser)
         }
 
 
@@ -76,5 +91,6 @@ class UserAdapter(private val context: Context, private val userList: ArrayList<
     class UserViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val nameText: TextView = itemView.findViewById(R.id.name_text)
         val evaluateButton: Button = itemView.findViewById(R.id.evaluate_Button)
+        val timetableButton: Button = itemView.findViewById(R.id.timetable_Button)
     }
 }
