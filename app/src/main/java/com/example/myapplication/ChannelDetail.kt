@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Layout
 import android.view.View
@@ -33,6 +34,8 @@ class ChannelDetail : AppCompatActivity() {
         val registerBusinessCardButton = findViewById<Button>(R.id.registerBusinessCardButton)
         val unregisterBusinessCardButton = findViewById<Button>(R.id.unregisterBusinessCardButton)
 
+        val channelHostBusinessCardButton = findViewById<Button>(R.id.channelHostBusinessCardButton)
+
         val channel = ChannelListManager.getChannelById(channelId)
 
         if (channel != null) {
@@ -52,6 +55,11 @@ class ChannelDetail : AppCompatActivity() {
                 ChannelType.COMPETITION -> "공모전 이름: ${channel.competitionName}"
                 else -> "알 수 없음"
             }
+        }
+        // 채널장 명함 보기 버튼
+        channelHostBusinessCardButton.setOnClickListener{
+            val intent = Intent(this, ChannelHostCardViewActivity::class.java)
+            startActivity(intent)
         }
 
         // 명함 등록 버튼 클릭 이벤트

@@ -18,9 +18,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ChannelHostCardViewActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity
             android:name=".TimetableShowActivity"
             android:exported="false" />
-        <activity android:name=".TimetableActivity"></activity>
+        <activity android:name=".TimetableActivity" />
         <activity
             android:name=".CardViewActivity"
             android:exported="false"
