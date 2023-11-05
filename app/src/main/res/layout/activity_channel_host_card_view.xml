@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="175dp"
                 android:font="@font/notosansregular"
-                android:text="B893285"
+                android:text="B789015"
                 android:textColor="#FFFFFF"
                 android:textSize="22dp" />
         </LinearLayout>
