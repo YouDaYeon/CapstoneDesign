@@ -44,10 +44,10 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".CardSettings"
+            android:name=".CardSettingsDialog"
             android:exported="true" />
         <activity
-            android:name=".StCardDesignActivity"
+            android:name=".StCardDesignFragment"
             android:exported="true" />
         <activity
             android:name=".EvaluateStar"
