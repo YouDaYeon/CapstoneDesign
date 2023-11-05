@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
@@ -45,6 +46,10 @@ class TimetableActivity : AppCompatActivity() {
 
             editor.apply()
             Toast.makeText(this, "시간표가 저장되었습니다!", Toast.LENGTH_SHORT).show()
+
+            // "mypage" 액티비티로 이동
+            val intent = Intent(this, MypageFragment::class.java)
+            startActivity(intent)
         }
     }
 
