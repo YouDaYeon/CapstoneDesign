@@ -82,7 +82,7 @@
             android:layout_height="150dp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="63.59dp"
-            android:src="@drawable/newjeansrabbit"
+            android:src="@drawable/man"
             android:id="@+id/profileimageCard"
             android:elevation="20dp"/>
         <LinearLayout
