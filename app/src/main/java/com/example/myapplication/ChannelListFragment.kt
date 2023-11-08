@@ -3,15 +3,21 @@ package com.example.myapplication
 import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +39,9 @@ class ChannelListFragment : Fragment() {
     private lateinit var recyclerViewMentorMentee: RecyclerView
     private lateinit var recyclerViewCompetition: RecyclerView
     private lateinit var searchEditText: EditText
+    private lateinit var tabtext_group:TextView
+    private lateinit var tabtext_mentor:TextView
+    private lateinit var tabtext_contest:TextView
 
     companion object {
         const val CREATE_CHANNEL_REQUEST = 1
@@ -55,6 +64,41 @@ class ChannelListFragment : Fragment() {
         recyclerViewCompetition = view.findViewById(R.id.recyclerViewCompetition)
         recyclerViewCompetition.layoutManager = LinearLayoutManager(requireContext())
 
+        tabtext_group = view.findViewById(R.id.tabtext_group)
+        tabtext_mentor = view.findViewById(R.id.tabtext_mentor)
+        tabtext_contest = view.findViewById(R.id.tabtext_contest)
+
+        tabtext_group.setOnClickListener {
+            tabtext_group.setTextColor(Color.parseColor("#00397E"))
+            tabtext_mentor.setTextColor(Color.parseColor("#99B0CB"))
+            tabtext_contest.setTextColor(Color.parseColor("#99B0CB"))
+            Log.d("messi", "group selected")
+            recyclerViewAssignment.setVisibility(View.VISIBLE)
+            recyclerViewMentorMentee.setVisibility(View.INVISIBLE)
+            recyclerViewCompetition.setVisibility(View.INVISIBLE)
+            Log.d("messi", "visible/invisible")
+        }
+        tabtext_mentor.setOnClickListener {
+            tabtext_group.setTextColor(Color.parseColor("#99B0CB"))
+            tabtext_mentor.setTextColor(Color.parseColor("#00397E"))
+            tabtext_contest.setTextColor(Color.parseColor("#99B0CB"))
+            Log.d("messi", "mentor selected")
+            recyclerViewAssignment.setVisibility(View.INVISIBLE)
+            recyclerViewMentorMentee.setVisibility(View.VISIBLE)
+            recyclerViewCompetition.setVisibility(View.INVISIBLE)
+            Log.d("messi", "visible/invisible")
+        }
+        tabtext_contest.setOnClickListener {
+            tabtext_group.setTextColor(Color.parseColor("#99B0CB"))
+            tabtext_mentor.setTextColor(Color.parseColor("#99B0CB"))
+            tabtext_contest.setTextColor(Color.parseColor("#00397E"))
+            Log.d("messi", "contest selected")
+            recyclerViewAssignment.setVisibility(View.INVISIBLE)
+            recyclerViewMentorMentee.setVisibility(View.INVISIBLE)
+            recyclerViewCompetition.setVisibility(View.VISIBLE)
+        }
+
+
         searchEditText = view.findViewById(R.id.searchEditText)
         searchEditText.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -65,7 +109,7 @@ class ChannelListFragment : Fragment() {
         }
 
         // "채널 만들기" 버튼 클릭 이벤트 처리
-        val createChannelButton = view.findViewById<Button>(R.id.createChannelButton)
+        val createChannelButton = view.findViewById<TextView>(R.id.createChannelButton)
         createChannelButton.setOnClickListener {
             val intent = Intent(requireContext(), CreateChannelActivity::class.java)
             startActivityForResult(intent, CREATE_CHANNEL_REQUEST)

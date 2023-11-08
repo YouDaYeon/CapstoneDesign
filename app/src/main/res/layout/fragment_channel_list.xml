@@ -23,139 +23,138 @@
                 android:layout_height="48dp"
                 android:src="@drawable/cc_logo"
                 app:tint="@color/white" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
-                android:text="채널 목록"
+                android:text="채널"
                 android:font="@font/notosansblack"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/searchEditText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="[채널 검색하기]"
-                android:font="@font/notosansmedium"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:gravity="center"
-                android:minHeight="30dp"
-                android:textColor="@color/green"
-                android:textColorHint="@color/green" />
-
-            <Button
-                android:id="@+id/createChannelButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginEnd="16dp"
-                android:onClick="onCreateChannelButtonClick"
-                android:text="채널 만들기" />
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
-
-    <!-- 3등분 레이아웃 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <!-- 왼쪽: 조별과제 채널 목록 -->
-        <ScrollView
-            android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="75dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="조별과제"
-                    android:gravity="center"
-                    android:font="@font/notosansblack"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:padding="8dp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewAssignment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout="@layout/item_channel"/>
-            </LinearLayout>
-        </ScrollView>
-
-        <!-- 가운데: 멘토와 멘티 채널 목록 -->
-        <ScrollView
-            android:layout_width="0dp"
+            android:text="조별과제"
+            android:id="@+id/tabtext_group"
+            android:textStyle="bold"
+            android:textColor="@color/cc_blue"
+            android:font="@font/notosansbold"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="85dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="멘토와 멘티"
-                    android:gravity="center"
-                    android:font="@font/notosansblack"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:padding="8dp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewMentorMentee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout="@layout/item_channel"/>
-            </LinearLayout>
-        </ScrollView>
-
-        <!-- 오른쪽: 공모전 채널 목록 -->
-        <ScrollView
-            android:layout_width="0dp"
+            android:layout_marginLeft="7dp"
+            android:id="@+id/tabtext_mentor"
+            android:text="멘토/멘티"
+            android:textStyle="bold"
+            android:textColor="#99B0CB"
+            android:font="@font/notosansbold"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="58dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="공모전"
-                    android:gravity="center"
-                    android:font="@font/notosansblack"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:padding="8dp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewCompetition"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:font="@font/notosansregular"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout="@layout/item_channel"/>
-            </LinearLayout>
-        </ScrollView>
+            android:layout_marginLeft="7dp"
+            android:id="@+id/tabtext_contest"
+            android:text="공모전"
+            android:textStyle="bold"
+            android:textColor="#99B0CB"
+            android:font="@font/notosansbold"
+            android:textSize="20dp"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/createChannelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/cc_blue"
+            android:textStyle="bold"
+            android:font="@font/notosansregular"
+            android:textSize="15dp"
+            android:onClick="onCreateChannelButtonClick"
+            android:text="채널 만들기" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/loginframe_cc"
+        android:gravity="center|center"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginBottom="4.5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/search_icon" />
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="350dp"
+            android:layout_height="15dp"
+            android:background="@android:color/transparent"
+            android:hint="채널 검색 키워드를 입력해주세요."
+            android:font="@font/notosansmedium"
+            android:imeOptions="actionDone"
+            android:layout_marginBottom="4.5dp"
+            android:textSize="10dp"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewAssignment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout="@layout/item_channel"/>
+        </ScrollView>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewMentorMentee"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout="@layout/item_channel"/>
+        </ScrollView>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCompetition"
+                android:layout_width="match_parent"
+                android:visibility="invisible"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:font="@font/notosansregular"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout="@layout/item_channel"/>
+        </ScrollView>
+    </RelativeLayout>
 </LinearLayout>
